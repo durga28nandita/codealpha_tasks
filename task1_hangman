@@ -1,0 +1,25 @@
+import random
+words=["pen","pencil","eraser","sharpener","scale"]
+wrong_guesses=0
+word=random.choice(words)
+hidden=['_']*len(word)
+while wrong_guesses <6 :
+    guess_letter=input("Enter a letter: ")
+    if guess_letter in word:
+        for i in range(len(word)):
+            if word[i]==guess_letter:
+                hidden[i]=guess_letter
+    else:
+        print(guess_letter," not in the word")
+        wrong_guesses+=1
+    for j in hidden:
+        print(j,end=' ')
+    if "_" not in hidden:
+        print("\nYou Won!!!")
+        break
+    print("\nYou have ",6-wrong_guesses," guesses left")
+if wrong_guesses==6:
+    print("You Lost!!")
+    print("\nThe word is ",word)
+
+

@@ -1,0 +1,25 @@
+total=0
+stocks={"AAPL":180,"TSL":250}
+while True:
+    stock_name=input("Enter stock name: ").upper()
+    try:
+        stock_quantity=int(input("Enter the quantity of stock: "))
+    except ValueError:
+        print("Please enter aa valid number\n")
+        continue
+    if stock_name in stocks:
+        investment_value=stocks[stock_name]*stock_quantity
+        total+=investment_value
+    else:
+        print("Stock name not found\n")
+    want_to_add_stocks=input("Want to continue(yes or no)? ").lower()
+    if want_to_add_stocks=='yes':
+        continue
+    elif want_to_add_stocks=='no':
+        break
+    else:
+        print("Invalid input\n")
+        continue
+print("The total stock price is: ",total,"\n")
+with open("stocks.txt","w") as file:
+    file.write(f"Total Investment Value: {total}")
